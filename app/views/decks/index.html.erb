@@ -12,7 +12,11 @@
   <div class="qblock">
   Number of Cards: <%= deck.cards.length %>
   Authored By: <%= deck.user.email %>
-  Last Dealt  : <%= deck.last_touched.strftime("%m/%d/%Y") %>
+  <% if deck.last_touched = "" %>
+    Last Dealt:
+  <% else %>
+    Last Dealt: <%= deck.last_touched.strftime("%m/%d/%Y") %>
+  <% end %>
   <div>
 </div>
 <% end %>
