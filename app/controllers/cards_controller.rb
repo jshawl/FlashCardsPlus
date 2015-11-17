@@ -1,5 +1,4 @@
 class CardsController < ApplicationController
-
   def index
     @cards = Card.all
   end
@@ -13,7 +12,6 @@ class CardsController < ApplicationController
 
   def new
     @card = Card.new
-
   end
 
   def edit

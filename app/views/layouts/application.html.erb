@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>FlashCardsPlus</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -10,7 +10,16 @@
 <header>
 
     <nav>
+      
       <%= link_to "Home", decks_path %>
+      <% if current_user %>
+        <%= link_to 'Signout', destroy_user_session_path, :method => :delete %>
+        <%= link_to 'Manage Decks', user_decks_path(current_user.id) %>
+      <% else %>
+        <%= link_to 'Signup', new_user_registration_path %>
+        <%= link_to 'Login', new_user_session_path %>
+      <% end %>
+
     </nav>
 
 </header>

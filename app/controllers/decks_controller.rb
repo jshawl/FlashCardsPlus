@@ -1,22 +1,40 @@
 class DecksController < ApplicationController
+
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
   def index
-    @decks = Deck.all
-    @deck = Deck.new
+    if params[:user_id]
+      @user = current_user
+      @decks = @user.decks.all
+      @deck = @user.decks.new
+      redirect_to new_user_deck_path
+    else
+      @decks = Deck.all
+      @deck = Deck.new
+    end
   end
 
   def create
-    @deck = Deck.new(deck_params)
+    @user = current_user
+    @deck = @user.decks.new(deck_params)
     if @deck.save
       flash[:notice] = "#{@deck.title} was successfully created."
-      redirect_to decks_path
+      redirect_to user_decks_path
     else
-      redirect_to decks_path
+      redirect_to user_decks_path
     end
   end
 
   def new
-    @deck = Deck.new
-    @card = @deck.cards.new
+    if params[:user_id]
+      @user = current_user
+      @deck = @user.decks.new
+      @card = @deck.cards.new
+      @decks = @user.decks.all
+    else
+      flash[:alert] = "You must be signed in to create a deck"
+      redirect_to root
+    end
   end
 
   def edit
@@ -26,6 +44,8 @@ class DecksController < ApplicationController
   end
 
   def show
+    @deck = Deck.find(params[:id])
+    
   end
 
   def update

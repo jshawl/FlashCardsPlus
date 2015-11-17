@@ -1,39 +1,18 @@
+<% @decks.each do |deck| %>
+<div class="decks_home">
+  <h2> <%= link_to deck.title, deck_path(deck) %> </h2>
+  <div class="qblock">
+    Sample Question: <% if deck.cards.length >0 %>
+    <%= deck.cards.first.question %>
 
-<table>
-  <tr>
-    <%= form_for @deck do |f| %>
-    <td>
-      <%= f.text_field :title %>
-    </td>
-    <td>
-    </td>
-    <td>
-    </td>
-    <td>
-      <%= f.submit %>
-    </td>
+    <% else %>
+    <%= "No Sample" %>
     <% end %>
-  </tr>
-  <tr>
-    <td>
-      Name of Deck
-    </td>
-    <td>
-      Number of Cards
-    </td>
-    <td>
-      Last Accessed
-    </td>
-    <td>
-      Deck Settings
-    </td>
-  </tr>
-  <% @decks.each do |deck| %>
-  <tr>
-    <td><%= deck.title %></td>
-    <td><%= deck.cards.length %> </td>
-    <td><%= deck.last_touched %> </td>
-    <td><%= link_to "Edit", edit_deck_path(deck) %> </td>
-  </tr>
-  <% end %>
-</table>
+  </div>
+  <div class="qblock">
+  Number of Cards: <%= deck.cards.length %>
+  Authored By: <%= deck.user.email %>
+  Last Dealt  : <%= deck.last_touched %>
+  <div>
+</div>
+<% end %>

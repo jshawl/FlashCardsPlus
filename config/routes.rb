@@ -2,6 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "decks#index"
 
+  resources :users do
+    resources :decks do
+      resources :cards
+      resources :subjects
+    end
+  end
+
   resources :decks do
     resources :cards
     resources :subjects

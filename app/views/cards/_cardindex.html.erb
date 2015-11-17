@@ -1,45 +1,39 @@
 <table>
   <tr>
-    <%= form_for [@deck, @card] do |f| %>
+    <%= form_for [@user, @deck] do |f| %>
     <td>
-      <%= f.text_field :question %>
+      <%= f.text_field :title %>
     </td>
     <td>
-      <%= f.text_field :answer %>
+    </td>
+    <td>
     </td>
     <td>
       <%= f.submit %>
     </td>
     <% end %>
+  </tr>
   <tr>
     <td>
-      Question
+      Name of Deck
     </td>
     <td>
-      Answer
+      Number of Cards
     </td>
     <td>
-      Edit
+      Last Accessed
+    </td>
+    <td>
+      Deck Settings
     </td>
   </tr>
-  <% @cards.reverse.each do |card| %>
-    <tr>
-      <%= form_for [@deck, card] do |f| %>
-      <td>
-        <%= f.text_field :question %>
-      </td>
-      <td>
-        <%= f.text_field :answer %>
-      </td>
-      <td>
-        <%= f.submit %>
-      </td>
-      <td>
-        <% if card.id %>
-          <%= link_to "Delete!", deck_card_path(@deck, card), method: :delete, class: 'delete' %>
-        <% end %>
-      </td>
-      <% end %>
-    </tr>
+  <% @decks.each do |deck| %>
+  <tr>
+    <td><%= deck.title %></td>
+    <td><%= deck.cards.length %> </td>
+    <td><%= deck.last_touched %> </td>
+    <td><%= link_to "Edit", edit_deck_path(deck) %> </td>
+    <td><%= "Hmm" %>
+  </tr>
   <% end %>
 </table>
