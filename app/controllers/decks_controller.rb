@@ -1,5 +1,4 @@
 class DecksController < ApplicationController
-
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
@@ -19,6 +18,7 @@ class DecksController < ApplicationController
     @deck = @user.decks.new(deck_params)
     if @deck.save
       flash[:notice] = "#{@deck.title} was successfully created."
+      @deck.last_touched = DateTime.now.to_date
       redirect_to user_decks_path
     else
       redirect_to user_decks_path
@@ -45,7 +45,13 @@ class DecksController < ApplicationController
 
   def show
     @deck = Deck.find(params[:id])
-    
+    if @deck.cards []
+      @card = @deck.cards.first
+    else
+      @card = @deck.cards.new
+    end
+    @deck.last_touched = DateTime.now.to_date
+    redirect_to deck_card_path(@deck, @card)
   end
 
   def update

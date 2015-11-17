@@ -18,6 +18,26 @@ class CardsController < ApplicationController
   end
 
   def show
+    @deck = Deck.find(params[:deck_id])
+    @leftarrow = "Previous Question"
+    @rightarrow = "Next Question"
+      if params[:id]
+        @card = @deck.cards.find(params[:id])
+        if @deck.cards.index(@card) == 0
+          @cardprevious = @deck.cards.last
+          @cardnext = @deck.cards[@deck.cards.index(@card)+1]
+          @leftarrow = "Last Card"
+        elsif @deck.cards.index(@card) == @deck.cards.length - 1
+          @cardprevious = @deck.cards[@deck.cards.index(@card)-1]
+          @cardnext = @deck.cards.first
+          @rightarrow = "First Card"
+        else
+          @cardprevious = @deck.cards[@deck.cards.index(@card)-1]
+          @cardnext = @deck.cards[@deck.cards.index(@card)+1]
+        end
+      else
+      @card = @deck.first
+      end
   end
 
   def update
