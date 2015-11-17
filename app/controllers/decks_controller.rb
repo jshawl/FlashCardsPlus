@@ -16,6 +16,7 @@ class DecksController < ApplicationController
   def create
     @user = current_user
     @deck = @user.decks.new(deck_params)
+    @deck.last_touched = DateTime.now
     if @deck.save
       flash[:notice] = "#{@deck.title} was successfully created."
       @deck.last_touched = DateTime.now.to_date
@@ -45,7 +46,7 @@ class DecksController < ApplicationController
 
   def show
     @deck = Deck.find(params[:id])
-    @deck.last_touched = Date.today
+    @deck.last_touched = DateTime.now
     @deck.save
     if @deck.cards []
       @card = @deck.cards.first
