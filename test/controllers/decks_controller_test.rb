@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DeckTopicTest < ActiveSupport::TestCase
+class DecksControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

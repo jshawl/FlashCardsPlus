@@ -6,10 +6,20 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+
+<header>
+
+    <nav>
+      <%= link_to "Home", decks_path %>
+    </nav>
+
+</header>
+
+<body data-no-turbolink="true">
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-<%= yield %>
+
+  <%= yield %>
 
 </body>
 </html>

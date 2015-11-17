@@ -1,0 +1,45 @@
+<table>
+  <tr>
+    <%= form_for [@deck, @card] do |f| %>
+    <td>
+      <%= f.text_field :question %>
+    </td>
+    <td>
+      <%= f.text_field :answer %>
+    </td>
+    <td>
+      <%= f.submit %>
+    </td>
+    <% end %>
+  <tr>
+    <td>
+      Question
+    </td>
+    <td>
+      Answer
+    </td>
+    <td>
+      Edit
+    </td>
+  </tr>
+  <% @cards.reverse.each do |card| %>
+    <tr>
+      <%= form_for [@deck, card] do |f| %>
+      <td>
+        <%= f.text_field :question %>
+      </td>
+      <td>
+        <%= f.text_field :answer %>
+      </td>
+      <td>
+        <%= f.submit %>
+      </td>
+      <td>
+        <% if card.id %>
+          <%= link_to "Delete!", deck_card_path(@deck, card), method: :delete, class: 'delete' %>
+        <% end %>
+      </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
