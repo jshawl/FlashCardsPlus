@@ -8,7 +8,7 @@ class DecksController < ApplicationController
       @deck = @user.decks.new
       redirect_to new_user_deck_path
     else
-      @decks = Deck.all
+      @decks = Deck.where(:published => true)
       @deck = Deck.new
     end
   end
@@ -56,11 +56,23 @@ class DecksController < ApplicationController
 
   def update
     @deck = Deck.find(params[:id])
-    if @deck.update(deck_params)
-      flash[:notice] = "Deck has been updated."
-      redirect_to edit_deck_path(@deck.id)
+    if params[:published] = true
+      if @deck.cards.length > 0
+        if @deck.update(deck_params)
+          flash[:notice] = "Deck has been updated."
+          redirect_to edit_deck_path(@deck.id)
+        else
+          redirect_to edit_deck_path(@deck.id)
+        end
+      else
+          flash[:notice] = "You must add cards before publishing."
+          redirect_to edit_deck_path(@deck.id)
+      end
     else
-      redirect_to edit_deck_path(@deck.id)
+      if @deck.update(deck_params)
+        flash[:notice] = "Deck has been updated."
+        redirect_to edit_deck_path(@deck.id)
+      end
     end
   end
 
@@ -70,7 +82,7 @@ class DecksController < ApplicationController
   private
 
   def deck_params
-  params.require(:deck).permit(:title)
+  params.require(:deck).permit(:title, :published)
   end
 
   def card_params

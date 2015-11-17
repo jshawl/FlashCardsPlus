@@ -1,6 +1,8 @@
 <%= form_for @deck do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
+  <%= f.check_box :published %>
+  <%= label_tag(:published, "Published?") %>
   <%= f.submit %>
 <% end %>
 
@@ -26,6 +28,9 @@
     </td>
     <td>
       Edit
+    </td>
+    <td>
+      Published?
     </td>
   </tr>
   <% @cards.reverse.each do |card| %>
