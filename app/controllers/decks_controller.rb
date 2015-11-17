@@ -45,19 +45,20 @@ class DecksController < ApplicationController
 
   def show
     @deck = Deck.find(params[:id])
+    @deck.last_touched = Date.today
+    @deck.save
     if @deck.cards []
       @card = @deck.cards.first
     else
       @card = @deck.cards.new
     end
-    @deck.last_touched = DateTime.now.to_date
     redirect_to deck_card_path(@deck, @card)
   end
 
   def update
     @deck = Deck.find(params[:id])
     if params[:published] = true
-      if @deck.cards.length > 0
+      if @deck.cards.length >= 5
         if @deck.update(deck_params)
           flash[:notice] = "Deck has been updated."
           redirect_to edit_deck_path(@deck.id)
@@ -65,7 +66,7 @@ class DecksController < ApplicationController
           redirect_to edit_deck_path(@deck.id)
         end
       else
-          flash[:notice] = "You must add cards before publishing."
+          flash[:notice] = "You must have at least 5 cards before publishing."
           redirect_to edit_deck_path(@deck.id)
       end
     else
@@ -77,6 +78,9 @@ class DecksController < ApplicationController
   end
 
   def destroy
+    @deck = Deck.find(params[:id])
+    @deck.destroy
+    redirect_to user_decks_path(current_user.id)
   end
 
   private

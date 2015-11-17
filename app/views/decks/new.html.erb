@@ -26,13 +26,16 @@
     <td>
       Deck Settings
     </td>
+    <td>
+      Published?
+    </td>
   </tr>
   <% @decks.each do |deck| %>
   <tr>
     <td><%= deck.title %></td>
     <td><%= deck.cards.length %> </td>
     <td><%= deck.last_touched %> </td>
-    <td><%= link_to "Edit", edit_deck_path(deck) %> </td>
+    <td><%= link_to "Edit", edit_deck_path(deck) %>/<%= link_to "Delete", deck_path(deck), method: :delete, class: 'delete' %> </td>
     <td>
     <% if deck.published %>
     <%= "Public" %>
