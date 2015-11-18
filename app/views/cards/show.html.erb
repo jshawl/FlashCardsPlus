@@ -1,6 +1,27 @@
 <h1> <%= @deck.title %> </h1>
+<nav>
 
-<%= link_to @leftarrow, deck_card_path(@deck, @cardprevious)%>
-<%= @card.question %>
-<%= @card.answer %>
-<%= link_to @rightarrow, deck_card_path(@deck, @cardnext)%>
+<div class="navleft">
+<%= link_to @leftarrow, deck_card_path(@deck, @cardprevious) %>
+</div>
+
+<div class="navright">
+  <%= link_to @rightarrow, deck_card_path(@deck, @cardnext)%>
+</div>
+
+</nav>
+
+<div class="cardwrapper">
+  <div class="card effect__click">
+    <div class="card__front">
+      <span class="cardshow card__text">
+      <%= @card.question %>
+      </span>
+    </div>
+    <div class="card__back">
+      <span class="cardshow card__text">
+        <%= @card.answer %>
+      </span>
+    </div>
+  </div>
+</div>

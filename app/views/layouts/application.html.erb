@@ -8,9 +8,7 @@
 </head>
 
 <header>
-
     <nav>
-      
       <%= link_to "Home", decks_path %>
       <% if current_user %>
         <%= link_to 'Signout', destroy_user_session_path, :method => :delete %>
@@ -19,12 +17,10 @@
         <%= link_to 'Signup', new_user_registration_path %>
         <%= link_to 'Login', new_user_session_path %>
       <% end %>
-
     </nav>
-
 </header>
-
 <body data-no-turbolink="true">
+  <h1>Flashcards Plus</h1>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 

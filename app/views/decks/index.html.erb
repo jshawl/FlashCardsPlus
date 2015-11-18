@@ -1,22 +1,24 @@
 <% @decks.each do |deck| %>
 <div class="decks_home">
-  <h2> <%= link_to deck.title, deck_path(deck) %> </h2>
-  <div class="qblock">
-    Sample Question: <% if deck.cards.length >0 %>
-    <%= deck.cards.first.question %>
-
-    <% else %>
-    <%= "No Sample" %>
-    <% end %>
+  <div class="card effect__click">
+    <div class="card__front">
+      <span class="card__text">
+        <h4>Sample Card </h4>
+      <%= deck.cards.first.question %>
+      </span>
+    </div>
+    <div class="card__back">
+      <span class="card__text">
+        <h4>Sample Card </h4>
+      <%= deck.cards.first.answer %>
+      </span>
+    </div>
   </div>
-  <div class="qblock">
-  Number of Cards: <%= deck.cards.length %>
-  Authored By: <%= deck.user.email %>
-  <% if deck.last_touched = "" %>
-    Last Dealt:
-  <% else %>
+  <div class="qblockright">
+    <h2> <%= link_to deck.title, deck_path(deck) %> </h2>
+    Number of Cards: <%= deck.cards.length %> </br>
+    Authored By: <%= deck.user.email %> </br>
     Last Dealt: <%= deck.last_touched.strftime("%m/%d/%Y") %>
-  <% end %>
-  <div>
+  </div>
 </div>
 <% end %>

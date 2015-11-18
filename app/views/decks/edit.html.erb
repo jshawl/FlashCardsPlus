@@ -6,6 +6,8 @@
   <%= f.submit %>
 <% end %>
 
+<h3> Add Cards To Your Deck </h3>
+
 <table>
     <td>
       Question
@@ -16,25 +18,20 @@
     <td>
       Edit
     </td>
-    <td>
-      Published?
-    </td>
   </tr>
   <% @cards.reverse.each do |card| %>
     <tr>
       <%= form_for [@deck, card] do |f| %>
       <td>
-        <%= f.text_field :question %>
+        <%= f.text_area :question, :id => "styled" %>
       </td>
       <td>
-        <%= f.text_field :answer %>
+        <%= f.text_area :answer, :id => "styled" %>
       </td>
       <td>
         <%= f.submit %>
-      </td>
-      <td>
-        <% if card.id %>
-          <%= link_to "Delete!", deck_card_path(@deck, card), method: :delete, class: 'delete' %>
+        <% if card.id %> </br>
+          <%= button_to "Delete Card", deck_card_path(@deck, card), method: :delete, class: 'delete', :id => "deleteButton" %>
         <% end %>
       </td>
       <% end %>

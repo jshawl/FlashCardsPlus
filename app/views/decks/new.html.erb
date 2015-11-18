@@ -1,18 +1,11 @@
+<h3> Add New Deck</h3>
+  <%= form_for [@user, @deck] do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.submit %>
+  <% end %>
+<h3> Manage Decks </h3>
 <table>
-  <tr>
-    <%= form_for [@user, @deck] do |f| %>
-    <td>
-      <%= f.text_field :title %>
-    </td>
-    <td>
-    </td>
-    <td>
-    </td>
-    <td>
-      <%= f.submit %>
-    </td>
-    <% end %>
-  </tr>
   <tr>
     <td>
       Name of Deck
@@ -34,7 +27,7 @@
   <tr>
     <td><%= deck.title %></td>
     <td><%= deck.cards.length %> </td>
-    <td><%= deck.last_touched %> </td>
+    <td><%= deck.last_touched.strftime("%m/%d/%Y") %> </td>
     <td><%= link_to "Edit", edit_deck_path(deck) %>/<%= link_to "Delete", deck_path(deck), method: :delete, class: 'delete' %> </td>
     <td>
     <% if deck.published %>

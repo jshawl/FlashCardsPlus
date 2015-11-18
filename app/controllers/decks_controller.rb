@@ -2,6 +2,7 @@ class DecksController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
+
     if params[:user_id]
       @user = current_user
       @decks = @user.decks.all
@@ -87,7 +88,7 @@ class DecksController < ApplicationController
   private
 
   def deck_params
-  params.require(:deck).permit(:title, :published)
+  params.require(:deck).permit(:title, :published, :last_touched)
   end
 
   def card_params

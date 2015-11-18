@@ -19,8 +19,11 @@ class CardsController < ApplicationController
 
   def show
     @deck = Deck.find(params[:deck_id])
-    @leftarrow = "Previous Question"
-    @rightarrow = "Next Question"
+    if @deck.published = false
+      redirect_to decks_path
+    else
+      @leftarrow = "Previous Question"
+      @rightarrow = "Next Question"
       if params[:id]
         @card = @deck.cards.find(params[:id])
         if @deck.cards.index(@card) == 0
@@ -38,6 +41,7 @@ class CardsController < ApplicationController
       else
       @card = @deck.first
       end
+    end
   end
 
   def update
