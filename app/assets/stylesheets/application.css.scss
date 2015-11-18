@@ -19,7 +19,7 @@
 }
 
 body {
-  background: url("bg_texture_wood_by_nortago.jpg");
+  background: asset-data-url("bg_texture_wood_by_nortago.jpg");
   width: 80%;
   margin: 0 auto;
 }
@@ -44,7 +44,7 @@ textarea#styled {
   padding: 30px;
   margin: 10px;
   font-family: Tahoma, sans-serif;
-  background-image: image-url('images/BlankFlashCard.jpg');
+  background-image: asset-data-url('BlankFlashCard.jpg');
   background-position: bottom right;
   background-repeat: no-repeat;
 }
