@@ -44,7 +44,7 @@ textarea#styled {
   padding: 30px;
   margin: 10px;
   font-family: Tahoma, sans-serif;
-  background-image: url('images/BlankFlashCard.jpg');
+  background-image: image-url('images/BlankFlashCard.jpg');
   background-position: bottom right;
   background-repeat: no-repeat;
 }
