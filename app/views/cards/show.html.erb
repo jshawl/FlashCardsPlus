@@ -1,27 +1,27 @@
-<h1> <%= @deck.title %> </h1>
-<nav>
+<h1> <%= @deck.title %> (<%= @deck.cards.index(@card)+1%>/<%= @deck.cards.length %>) </h1>
 
-<div class="navleft">
-<%= link_to @leftarrow, deck_card_path(@deck, @cardprevious) %>
-</div>
 
-<div class="navright">
-  <%= link_to @rightarrow, deck_card_path(@deck, @cardnext)%>
-</div>
+<div class= "showwrapper">
+  <div class="navleft navshows">
+    <%= link_to image_tag('left_arrow_transparent.png', size:"50", id: "leftbutton"), deck_card_path(@deck, @cardprevious) %>
+  </div>
 
-</nav>
-
-<div class="cardwrapper">
-  <div class="card effect__click">
-    <div class="card__front">
-      <span class="cardshow card__text">
-      <%= @card.question %>
-      </span>
+  <div id= "test2">
+    <div class="card effect__click" id= "test">
+      <div class="card__front">
+        <span class="cardshow card__text">
+          <%= @card.question %>
+        </span>
+      </div>
+      <div class="card__back">
+        <span class="cardshow card__text">
+          <%= @card.answer %>
+        </span>
+      </div>
     </div>
-    <div class="card__back">
-      <span class="cardshow card__text">
-        <%= @card.answer %>
-      </span>
-    </div>
+  </div>
+
+  <div class="navright navshows">
+    <%= link_to image_tag('right_arrow_transparent.png', size:"50", id: "rightbutton"), deck_card_path(@deck, @cardnext) %>
   </div>
 </div>

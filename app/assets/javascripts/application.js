@@ -29,4 +29,19 @@ $(document).ready(function(){
     });
   }
 })();
+
+ //This is the js keycode for ENTER
+
+function keypress(e){
+  key = e.which;
+  if(key == 39){
+    $("#rightbutton").click()
+  } else if(key == 37) {
+    $("#leftbutton").click()
+  } else if(key == 32) {
+    $("#test").click()
+  }
+}
+
+$(document).on('keydown', keypress);
 });
