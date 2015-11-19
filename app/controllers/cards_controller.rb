@@ -58,6 +58,11 @@ class CardsController < ApplicationController
   def destroy
     @card = Card.find(params[:id])
     @card.destroy
+    @deck = @card.deck
+    if @deck.cards.length < 5
+      @deck.published = false
+    end
+    @deck.save
     redirect_to edit_deck_path(params[:deck_id])
   end
 

@@ -1,3 +1,6 @@
+<div class="editpage">
+
+
 <%= form_for @deck do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
@@ -8,7 +11,7 @@
 
 <h3> Add Cards To Your Deck </h3>
 
-<table>
+<table >
     <td>
       Question
     </td>
@@ -20,7 +23,7 @@
     </td>
   </tr>
   <% @cards.reverse.each do |card| %>
-    <tr>
+    <tr id= "cardform">
       <%= form_for [@deck, card] do |f| %>
       <td>
         <%= f.text_area :question, :id => "styled" %>
@@ -30,7 +33,9 @@
       </td>
       <td>
         <%= f.submit %>
-        <% if card.id %> </br>
+      </td>
+      <td>
+        <% if card.id %>
           <%= button_to "Delete Card", deck_card_path(@deck, card), method: :delete, class: 'delete', :id => "deleteButton" %>
         <% end %>
       </td>
@@ -38,3 +43,4 @@
     </tr>
   <% end %>
 </table>
+</div>

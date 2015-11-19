@@ -32,14 +32,50 @@ h1{
   color: #ffcc00;
 }
 
+h3{
+  color: #ffcc00;
+}
+
 h4{
   display: block;
   width: 100%;
 }
 
+#editpage {
+  color: white;
+}
+
+label{
+  color: #9090f4;
+}
+table{
+  color: #9090f4;
+}
+
+tr{
+  border-bottom: solid black 2px;
+}
+
+td{
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+textarea#styled {
+  width: 300px;
+  height: 120px;
+  border: 3px solid #cccccc;
+  padding: 30px;
+  margin: 10px;
+  font-family: Tahoma, sans-serif;
+  background-image: url('images/BlankFlashCard.jpg');
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
+
 input#deleteButton{
   width: 106.719px;
-  margin-top: 5px;
 }
 
 td{
@@ -48,6 +84,10 @@ td{
 
 .decks_home{
   width: 0 auto;
+}
+
+#cardform{
+  color: black;
 }
 
 .qblockright{
@@ -105,6 +145,14 @@ td{
   float: right;
 }
 
+a:link, a:visited, a:active {
+    color: #9090f4;
+    text-decoration: none;
+    font-weight: bold;
+}
+p.notice, p.alert {
+  color: red;
+}
 /*http://callmenick.com/post/css-transitions-transforms-animations-flipping-card*/
 #card {
   width: 48%;
