@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   end
 
   resources :decks do
-    resources :cards
+    resources :cards do
+      collection { post :import }
+    end
     resources :subjects
   end
 

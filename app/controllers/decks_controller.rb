@@ -40,6 +40,7 @@ class DecksController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @deck = Deck.find(params[:id])
     @cards = @deck.cards
     @card = @deck.cards.new

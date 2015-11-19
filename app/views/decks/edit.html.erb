@@ -11,6 +11,14 @@
 
 <h3> Add Cards To Your Deck </h3>
 
+<h3>Import Cards:</h3>
+  <%= form_tag import_deck_cards_path(@deck), multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= hidden_field_tag :name => @deck.id %>
+  <%= submit_tag "Import from CSV", :test => @deck.id %>
+  <% end %>
+
+<h3> Add/Edit Manually :</h3>
 <table >
     <td>
       Question
@@ -20,6 +28,8 @@
     </td>
     <td>
       Edit
+    </td>
+    <td>
     </td>
   </tr>
   <% @cards.reverse.each do |card| %>
@@ -34,11 +44,9 @@
       <td>
         <%= f.submit %>
       </td>
-      <td>
-        <% if card.id %>
-          <%= button_to "Delete Card", deck_card_path(@deck, card), method: :delete, class: 'delete', :id => "deleteButton" %>
-        <% end %>
-      </td>
+      <% end %>
+      <% if card.id %>
+      <td> <%= button_to "Delete Card", deck_card_path(@deck, card), method: :delete, class: 'delete', :id => "deleteButton" %> </td>
       <% end %>
     </tr>
   <% end %>

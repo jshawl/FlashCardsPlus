@@ -3,6 +3,13 @@ class CardsController < ApplicationController
     @cards = Card.all
   end
 
+  def import
+    @deck = Deck.find(params[:deck_id])
+    Card.import(params[:file],params[:deck_id])
+    flash[:notice] = "File has been imported."
+    redirect_to edit_deck_path(@deck)
+  end
+
   def create
       @deck = Deck.find(params[:deck_id])
       @card = @deck.cards.new(card_params)
