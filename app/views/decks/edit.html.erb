@@ -13,9 +13,8 @@
 
 <h3>Import Cards:</h3>
   <%= form_tag import_deck_cards_path(@deck), multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= hidden_field_tag :name => @deck.id %>
-  <%= submit_tag "Import from CSV", :test => @deck.id %>
+  <%= file_field_tag :file, id:"filefieldtag" %>
+  <%= submit_tag "Import from CSV"%>
   <% end %>
 
 <h3> Add/Edit Manually :</h3>
