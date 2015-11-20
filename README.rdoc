@@ -1,28 +1,16 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is my Flash Card Application built in Ruby. I achieved my MVP with a 3
+model rails application that allowed users to own and modify decks of
+flashcards using Ruby, Rails and Javascript and specialty gem Devise.
 
-Things you may want to cover:
+I wanted my application to have two ways to interact with the application. An
+unobtrusive user-facing side where users can access all decks without creating a
+an account. Also, more importantly, I wanted to create an owner-facing side that
+allows a user to create, modify and manage decks. Additionally, I wanted to
+owner to have certain functions. I wanted Owners to be able to keep decks
+private and be able to import cards from external sources.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+I did want to be able to tag decks with subjects and while I have created the
+models for it I did not implement it. I also wanted to be able to allow users to
+suggest new cards to decks that the user would then accept or decline.
