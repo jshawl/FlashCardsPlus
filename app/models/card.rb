@@ -3,9 +3,11 @@ class Card < ActiveRecord::Base
   require 'csv'
 
   def self.import(file, deck_id)
+    # awesome feature!
     CSV.foreach(file.path,headers: true) do |row|
       @temp = Card.new row.to_hash
-      @temp.deck_id = deck_id
+      # question: why not make this a model method on Deck?
+      @temp.deck_id = deck_id ## ^^
       @temp.save
     end
   end

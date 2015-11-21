@@ -1,6 +1,7 @@
 
 
 <% form_for [@deck, @card] do |f| %>
+  <!-- if you add AR validations, you can explain here why something cannot be created -->
 
   <%= f.label :question %>
   <%= f.text_area :question %>

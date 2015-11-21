@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :decks do
     resources :cards do
-      collection { post :import }
+      collection { post :import } # AWESOME
     end
     resources :subjects
   end
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :decks
   end
 
-get '*unmatched_route', to: 'application#not_found'
+get '*unmatched_route', to: 'application#not_found' # :+1:
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

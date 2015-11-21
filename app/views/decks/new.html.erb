@@ -1,11 +1,13 @@
 <h3> Add New Deck</h3>
   <%= form_for [@user, @deck] do |f| %>
+    <!-- or render the partial here? -->
     <%= f.label :title %>
     <%= f.text_field :title %>
     <%= f.submit %>
   <% end %>
 <h3> Manage Decks </h3>
 <table>
+  <!-- I recommend using CSS to layout this form. Use tables for tabular data.. -->
   <tr>
     <td>
       Name of Deck

@@ -15,12 +15,17 @@
 //= require turbolinks
 //= require_tree .
 $(document).ready(function(){
-(function() {
-  var cards = document.querySelectorAll(".card.effect__click");
+(function() { // awesome IIFE! Though, unencessary here because of document.ready()
+  var cards = document.querySelectorAll(".card.effect__click"); // consider using jQuery since it's already on the page
   for ( var i  = 0, len = cards.length; i < len; i++ ) {
     var card = cards[i];
     clickListener( card );
   }
+
+  // jQuery:
+  // $(".card.effect__click").on("click", function(){
+    // $(this).toggleClass("flipped")
+  // })
 
   function clickListener(card) {
     card.addEventListener( "click", function() {
@@ -42,6 +47,8 @@ function keypress(e){
     $("#test").click()
   }
 }
+// ^^ excellent!
 
 $(document).on('keydown', keypress);
+// remember to indent correctly
 });

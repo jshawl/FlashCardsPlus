@@ -1,7 +1,7 @@
 class SubjectsController < ApplicationController
 
   def create
-
+   # remove unused code
   end
 
   def new

@@ -50,7 +50,7 @@ class DecksController < ApplicationController
     @deck = Deck.find(params[:id])
     @deck.last_touched = DateTime.now
     @deck.save
-    if @deck.cards []
+    if @deck.cards [] # == ? 
       @card = @deck.cards.first
     else
       @card = @deck.cards.new
@@ -61,7 +61,8 @@ class DecksController < ApplicationController
   def update
     @deck = Deck.find(params[:id])
     if params[:published] = true
-      if @deck.cards.length >= 5
+      if @deck.cards.length >= 5 # this is a great candidate for a custom validation
+	# check out http://guides.rubyonrails.org/active_record_validations.html#performing-custom-validations
         if @deck.update(deck_params)
           flash[:notice] = "Deck has been updated."
           redirect_to edit_deck_path(@deck.id)
@@ -89,11 +90,11 @@ class DecksController < ApplicationController
   private
 
   def deck_params
-  params.require(:deck).permit(:title, :published, :last_touched)
+    params.require(:deck).permit(:title, :published, :last_touched)
   end
 
   def card_params
-  params.require(:card).permit(:question, :answer)
+    params.require(:card).permit(:question, :answer)
   end
 
 end

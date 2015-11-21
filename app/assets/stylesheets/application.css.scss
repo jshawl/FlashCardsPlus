@@ -19,12 +19,13 @@
 }
 
 body {
-  background: asset-data-url("bg_texture_wood_by_nortago.jpg");
+  background: asset-data-url("bg_texture_wood_by_nortago.jpg"); /* awesome!! */
   width: 80%;
   margin: 0 auto;
 }
 
 header nav{
+  // remove unused code
 }
 
 h1{
@@ -70,7 +71,7 @@ textarea#styled {
   padding: 30px;
   margin: 10px;
   font-family: Tahoma, sans-serif;
-  background-image: url('images/BlankFlashCard.jpg');
+  background-image: url('images/BlankFlashCard.jpg'); // consider using asset-url here
   background-position: bottom right;
   background-repeat: no-repeat;
 }
@@ -154,6 +155,8 @@ a:link, a:visited, a:active {
 
 p.notice, p.alert {
   color: red;
+  // I recommend distinguishing between success and errors.
+  // e.g. "created successfully" and "could not create..." are the same color
 }
 
 em{
@@ -169,6 +172,16 @@ em{
   color: white;
 }
 /*http://callmenick.com/post/css-transitions-transforms-animations-flipping-card*/
+// awesome flip animation! 
+// I think if you add perspective to the containing element, it will look more 3d:
+/*
+#card_parent{
+  transform-style: preserve3d;
+  perspective: 800px;
+  // https://davidwalsh.name/3d-transforms
+}
+*/
+
 #card {
   width: 48%;
   margin: 1%;
@@ -202,6 +215,7 @@ em{
   -webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);
    -moz-box-shadow: 0px 1px 10px rgba(0, 0, 0, 1);
    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+   // nice! maybe check out autoprefixer to do this for you - https://github.com/postcss/autoprefixer
    z-index:10;
 }
 
